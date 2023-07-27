@@ -70,9 +70,6 @@ init(void)
      init_pair(0, ttyclock.bg, ttyclock.bg);
      init_pair(1, ttyclock.bg, ttyclock.option.color);
      init_pair(2, ttyclock.option.color, ttyclock.bg);
-//     init_pair(0, ttyclock.bg, ttyclock.bg);
-//     init_pair(1, ttyclock.bg, ttyclock.option.color);
-//     init_pair(2, ttyclock.option.color, ttyclock.bg);
      refresh();
 
      /* Init signal handler */
@@ -200,12 +197,12 @@ update_hour(void)
      ttyclock.date.minute[1] = ttyclock.tm->tm_min % 10;
 
      /* Set date string */
-     strcpy(ttyclock.date.old_datestr, ttyclock.date.datestr);
+     strncpy(ttyclock.date.old_datestr, ttyclock.date.datestr, 256 - 1);
      strftime(tmpstr,
               sizeof(tmpstr),
               ttyclock.option.format,
               ttyclock.tm);
-     sprintf(ttyclock.date.datestr, "%s%s", tmpstr, ttyclock.meridiem);
+     snprintf(ttyclock.date.datestr, 256, "%s%s", tmpstr, ttyclock.meridiem);
 
      /* Set seconds */
      ttyclock.date.second[0] = ttyclock.tm->tm_sec / 10;

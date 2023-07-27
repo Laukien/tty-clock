@@ -2,7 +2,7 @@
 #Under BSD License
 #See clock.c for the license detail.
 
-SRC = ttyclock.c ttyclock.h
+SRC = ttyclock.c
 CC ?= gcc
 BIN ?= tty-clock
 PREFIX ?= /usr/local
@@ -21,6 +21,9 @@ else ifeq ($(shell sh -c 'which ncurses5-config>/dev/null 2>/dev/null && echo y'
 else ifeq ($(shell sh -c 'which ncursesw5-config>/dev/null 2>/dev/null && echo y'), y)
 	CFLAGS += -Wall -g $$(ncursesw5-config --cflags)
 	LDFLAGS += $$(ncursesw5-config --libs)
+else ifeq ($(shell sh -c 'test `uname -s` == 'OpenBSD'>/dev/null 2>/dev/null && echo y'), y)
+	CFLAGS += -Wall -O2
+	LDFLAGS += -l ncurses
 else
 	CFLAGS += -Wall -g $$(pkg-config --cflags ncurses)
 	LDFLAGS += $$(pkg-config --libs ncurses)

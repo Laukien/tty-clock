@@ -2,9 +2,9 @@
 #Under BSD License
 #See clock.c for the license detail.
 
-SRC = ttyclock.c
-CC ?= gcc
-BIN ?= tty-clock
+SRC = src/ttyclock.c
+CC ?= cc
+BIN ?= bin/tty-clock
 PREFIX ?= /usr/local
 INSTALLPATH ?= ${DESTDIR}${PREFIX}/bin
 MANPATH ?= ${DESTDIR}${PREFIX}/share/man/man1
@@ -32,6 +32,7 @@ endif
 tty-clock : ${SRC}
 
 	@echo "building ${SRC}"
+	@mkdir -p bin
 	${CC} ${CFLAGS} ${SRC} -o ${BIN} ${LDFLAGS}
 
 install : ${BIN}

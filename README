@@ -1,3 +1,16 @@
+# TTY-CLOCK
+TTY-Clock displays a simple digital clock on the terminal.
+
+## What's new?
+* restructure and simplification of some parts
+* one programming style
+* use definitions instead of raw values
+* fixed strncpy boundary error
+* strcpy and sprintf changed to more secure strncpy and snprintf
+* add an option in Makefile to build tty-clock for BSD
+* added security for OpenBSD (unveil and pledge)
+
+## Options
 usage : tty-clock [-iuvsScbtrahDBxn] [-C [0-7]] [-f format] [-d delay] [-a nsdelay] [-T tty]
     -s            Show seconds
     -S            Screensaver mode

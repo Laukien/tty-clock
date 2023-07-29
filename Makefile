@@ -2,12 +2,16 @@
 #Under BSD License
 #See clock.c for the license detail.
 
-SRC = src/ttyclock.c
+SRC = src/ttyclock.c src/show.c
 CC ?= cc
 BIN ?= bin/tty-clock
 PREFIX ?= /usr/local
 INSTALLPATH ?= ${DESTDIR}${PREFIX}/bin
 MANPATH ?= ${DESTDIR}${PREFIX}/share/man/man1
+CFLAGS := -std=c99
+CFLAGS += -O2
+CFLAGS += -Wall -Wextra -Wpedantic
+
 
 ifeq ($(shell sh -c 'which ncurses6-config>/dev/null 2>/dev/null && echo y'), y)
 	CFLAGS += -Wall -g $$(ncurses6-config --cflags)

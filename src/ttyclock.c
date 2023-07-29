@@ -1,8 +1,8 @@
 /*
  *     TTY-CLOCK ttyclock.c file.
- *     Copyright © 2023 Stephan Laukien <software@laukien.com>
- *     Copyright © 2009-2018 tty-clock contributors
- *     Copyright © 2008 Martin Duquesnoy <xorg62@gmail.com>
+ *     Copyright (c) 2023 Stephan Laukien <software@laukien.com>
+ *     Copyright (c) 2009-2018 tty-clock contributors
+ *     Copyright (c) 2008-2009 Martin Duquesnoy <xorg62@gmail.com>
  *     All rights reserved.
  *
  *     Redistribution and use in source and binary forms, with or without
@@ -194,7 +194,7 @@ static bool init_option(int argc, char **argv)
         case 'x':
             ttyclock.option.box = true;
             break;
-        case 'T': 
+        case 'T':
             if (stat(optarg, &sbuf) == -1) {
                 fprintf(stderr, "ERROR: couldn't stat '%s': %s.\n",
                         optarg, strerror(errno));
@@ -599,7 +599,7 @@ clock_move(int x, int y, int w, int h)
     }
 
     wrefresh(ttyclock.framewin);
-    wrefresh(ttyclock.datewin); 
+    wrefresh(ttyclock.datewin);
 
     return;
 }

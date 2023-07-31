@@ -9,6 +9,11 @@ TTY-Clock displays a simple digital clock on the terminal.
 * strcpy and sprintf changed to more secure strncpy and snprintf
 * add an option in Makefile to build tty-clock for BSD
 * added security for OpenBSD (unveil and pledge)
+* correct types and casting in source
+* compiled against clangs '-Weverything'
+* extract option-struct to shrink ttyclock-struct
+* optimized ttyclock (padding)
+* add stack-protection
 
 ## Options
 usage : tty-clock [-iuvsScbtrahDBxn] [-C [0-7]] [-f format] [-d delay] [-a nsdelay] [-T tty]

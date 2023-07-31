@@ -37,7 +37,7 @@
 #define SHOW_H
 
 #define PRG_TITLE   "TTY-Clock"
-#define PRG_VERSION "3.0.0"
+#define PRG_VERSION "3.0.1"
 #define PRG_DATE    "2008-2023"
 #define PRG_AUTHOR_1 "Stephan Laukien (software@laukien.com)"
 #define PRG_AUTHOR_2 "Grey (grey@greytheory.net)"

@@ -51,36 +51,18 @@
 
 /* Global ttyclock struct */
 typedef struct {
+    /* terminal variables */
+    SCREEN *ttyscr;
+    char *tty;
+    FILE *ftty;
+    short bg;
+
     /* while() boolean */
     bool running;
 
     /* exit code of a subroutine */
+    char pad_exit[5];
     int exit;
-
-    /* terminal variables */
-    SCREEN *ttyscr;
-    int bg;
-    char *tty;
-    FILE *ftty;
-
-    /* Running option */
-    struct {
-        long delay;
-        long nsdelay;
-        int color;
-        char format[100];
-        bool second:1;
-        bool screensaver:1;
-        bool twelve:1;
-        bool center:1;
-        bool rebound:1;
-        bool date:1;
-        bool utc:1;
-        bool box:1;
-        bool noquit:1;
-        bool bold:1;
-        bool blink:1;
-    } option;
 
     /* Clock geometry */
     struct {
@@ -91,14 +73,15 @@ typedef struct {
 
     /* Date content ([2] = number by number) */
     struct {
-        unsigned int hour[2];
-        unsigned int minute[2];
-        unsigned int second[2];
+        int hour[2];
+        int minute[2];
+        int second[2];
         char datestr[DATE_SIZE];
         char old_datestr[DATE_SIZE];
     } date;
 
     /* time.h utils */
+    char pad_time[4];
     struct tm *tm;
     time_t lt;
 
@@ -106,8 +89,27 @@ typedef struct {
     char *meridiem;
     WINDOW *framewin;
     WINDOW *datewin;
-
 } ttyclock_t;
+
+/* Running option */
+typedef struct {
+    long delay;
+    long nsdelay;
+    short color;
+    char format[100];
+    bool second:1;
+    bool screensaver:1;
+    bool twelve:1;
+    bool center:1;
+    bool rebound:1;
+    bool date:1;
+    bool utc:1;
+    bool box:1;
+    bool noquit:1;
+    bool bold:1;
+    bool blink:1;
+    int pad:5; /* alignment */
+} option_t;
 
 #endif /* TTYCLOCK_H */
 

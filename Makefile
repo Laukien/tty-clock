@@ -11,6 +11,8 @@ MANPATH ?= ${DESTDIR}${PREFIX}/share/man/man1
 CFLAGS := -std=c99
 CFLAGS += -O2
 CFLAGS += -Wall -Wextra -Wpedantic
+#CFLAGS += -Weverything
+CFLAGS += -fstack-protector-all
 
 
 ifeq ($(shell sh -c 'which ncurses6-config>/dev/null 2>/dev/null && echo y'), y)
